@@ -14,12 +14,20 @@
 	<script src="js/jquery-3.2.1.js"></script>
 	<script type="text/javascript">
 		$(function(){
+			var ctx = $("#gameview")[0].getContext('2d');
+			
+			var bgImag = new Image();
+			bgImag.src = "img/background.png"
+			
 			var startImage = new Image();
 			startImage.src = "img/timg1.jpg"
 			startImage.onload = function(){
-				$("#gameview")[0].getContext('2d').drawImage(startImage,0,0,500,500)
-			}
+				ctx.drawImage(startImage,0,0,500,500)
 			
+			}
+			$("#gameview").click(function(){
+				ctx.drawImage(bgImag,0,0,500,500)
+			})
 			
 		})
 	</script>
