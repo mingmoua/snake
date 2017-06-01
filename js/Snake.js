@@ -271,7 +271,10 @@ function Snake() {
 			_this.dead();
 			if(_this.isDead){
 				//alert你的最终分数
-				alert("your score is : "+ _this.score)
+//				alert("your score is : "+ _this.score)
+				$quan = $("<div></div>");
+				$quan.css({"width":"1000px","height":"1000px","background-color":"red","margin-left":"10px"})
+				$quan.appendTo($("body"))
 				clearInterval(_this.timer);//如果不清除定时器，速度会越来越快
 				_this.isDead = false;//改变isDead状态，否则每次直接死掉
 				_this.snakeBodyList = [];
