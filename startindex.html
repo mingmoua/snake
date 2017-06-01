@@ -4,7 +4,7 @@
 		<meta charset="UTF-8">
 		<title></title>
 		<style type="text/css">
-			.middle{
+			/*.middle{
 				background: url(bgimg/start.jpg) no-repeat;
 				background-size: 850px 500px;
 				width: 850px;
@@ -87,6 +87,144 @@
 				opacity: 1;
 			}
 			#article{
+				display: none;
+			}*/
+			* {
+				padding: 0;
+				margin: 0 auto;
+			}
+			
+			.all {
+				width: 900px;
+				height: 700px;
+			}
+			/*页面自适应*/
+			
+			@media only screen and (max-width: 800px) {
+				.all {
+					width: 100%;
+				}
+				.head img {
+					width: 100%;
+				}
+				#gameview {
+					width: 100%;
+					/*canvas自适应*/
+				}
+				#game_diff {
+					background: url(static/img/start2.jpg);
+					background-size: 100% 100%;
+				}
+				.middle {
+					width: 100%;
+				}
+				#game_diff ul{
+					width: 100%;
+				}
+				#game_diff li{
+					width: 100%;
+				}
+				.stop {
+					width: 100%;
+				}
+			}
+			
+			.middle {
+				background: url(bgimg/start.jpg) no-repeat;
+				background-size: 100% 100%;
+				height: 500px;
+			}
+			/*关卡选择*/
+			
+			.guan {
+				display: inline-block;
+				width: 100px;
+				height: 30px;
+				border: solid 1px black;
+				background-color: white;
+				border-radius: 10px;
+				text-align: center;
+				line-height: 30px;
+				font-size: 18px;
+				margin-left: 10px;
+				margin-top: 10px;
+				cursor: pointer;
+			}
+			/*开始游戏*/
+			
+			.go {
+				display: inline-block;
+				width: 124px;
+				height: 30px;
+				border: solid 1px black;
+				background-color: white;
+				border-radius: 10px;
+				text-align: center;
+				line-height: 30px;
+				font-size: 18px;
+				margin-left: 10px;
+				margin-top: 40px;
+				cursor: pointer;
+			}
+			/*音乐暂停*/
+			.stop{
+				/*display: inline-block;*/
+				width: 124px;
+				padding: 5px;
+				border: solid 1px black;
+				background-color: white;
+				border-radius: 10px;
+				text-align: center;
+				font-size: 18px;
+				margin-right: 33px;
+				margin-top: 322px;
+				float: right;
+				
+			}
+			/*logo*/
+			
+			.bgimg img {
+				margin-left: 20px;
+				cursor: pointer;
+				opacity: 0.5;
+			}
+			/*关卡背景*/
+			
+			#game_diff {
+				width: 150px;
+				height: 350px;
+				
+				background: url(static/img/start2.jpg);
+				background-size: 100% 100%;
+				padding-top: 150px;
+				margin-top: -500px;
+				
+				display: none;
+			}
+			/*关卡*/
+			
+			#game_diff ul {
+				
+			}
+			
+			#game_diff li {
+				list-style: none;
+				width: 80px;
+				height: 30px;
+				text-align: center;
+				line-height: 30px;
+				background-color: yellow;
+				opacity: 0.7;
+				margin-top: 10px;
+				cursor: pointer;
+				border-radius: 5px;
+			}
+			
+			#game_diff li:hover {
+				opacity: 1;
+			}
+			
+			#article {
 				display: none;
 			}
 		</style>
