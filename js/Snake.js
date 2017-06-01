@@ -21,7 +21,7 @@ var speednum = 500;//设置定时器的时间，调节速度
 function Snake() {
 	this.canvas = $("#gameview")[0]; //canvas画布对象
 	this.ctx = this.canvas.getContext("2d"); //画笔
-	this.width = 500; //背景（游戏屏幕）的宽度
+	this.width = 850; //背景（游戏屏幕）的宽度
 	this.height = 500; //背景（游戏屏幕）的高度
 	this.step = 25; //设计步长
 	this.stepX = Math.floor(this.width / this.step); //X轴步数

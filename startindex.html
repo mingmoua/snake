@@ -36,6 +36,19 @@
 				margin-left: 10px;
 				margin-top: 40px;
 			}
+			.stop{
+				display: inline-block;
+				width: 124px;
+				height: 30px;
+				border: solid 1px black;
+				background-color: white;
+				border-radius: 10px;
+				text-align: center;
+				line-height: 30px;
+				font-size: 18px;
+				margin-left: 700px;
+				margin-top: 335px;
+			}
 			.bgimg img{
 				margin-left: 20px;
 				opacity: 0.5;
@@ -84,11 +97,13 @@
 				<img src="bgimg/logo-1.png" />
 			</div>
 			<article id="article">
-				<canvas id="gameview" width="500" height="500"></canvas>
+				<canvas id="gameview" width="850" height="500"></canvas>
 			</article>
 			<div class="middle">
 				<a class="guan">关卡选择</a><br />
-				<a class="go">PLAY GAME</a>
+				<a class="go">PLAY GAME</a><br />
+				<a class="stop">音乐暂停</a>
+				<audio src="bgimg/music.mp3" autoplay="autoplay" class="music"></audio>
 			</div>
 			<div id="game_diff">
 				<ul>
@@ -115,9 +130,19 @@
 	<script src="js/jquery-3.1.1.min.js"></script>
 	<script src="js/Snake.js"></script>
 	<script type="text/javascript">
-									
+								
 			$(function(){
-				var snakegame=new Snake();											
+				var snakegame=new Snake();
+				var b = true;
+				$(".guan").click(function(){
+					if(b){
+						$("#game_diff").css("display","block");
+						b=false;
+					}else{
+						$("#game_diff").css("display","none");
+						b=true;
+					}
+				})
 				$("li").click(function(){			
 					speednum=500/($(this).index()+1);			
 					snakegame.start();
@@ -135,11 +160,11 @@
 					$(".bgimg").hide();
 					$(".middle").hide();
 				})
-				
-				$(".guan").click(function(){
-					$("#game_diff").css("display","block");
-				})
-				
+//				
+//				$(".guan").click(function(){
+//					$("#game_diff").css("display","block");
+//				})
+//				
 				$(".img1").css("border","solid 2px greenyellow");
 				$(".bgimg img").click(function(){
 					$(".bgimg img").css("border","");
@@ -148,6 +173,19 @@
 					$(this).css("opacity",1);
 					
 				})
+				var a = true;
+				$(".stop").click(function(){
+					if(a){
+						$(".music").attr("src","");
+						$(".stop").html("音乐播放");
+						a = false;
+					}else{
+						$(".stop").html("音乐暂停");
+						$(".music").attr("src","bgimg/music.mp3");
+						a= true;
+					}
+				})
+				
 			})
 	</script>
 </html>
