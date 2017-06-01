@@ -2,93 +2,10 @@
 <html>
 	<head>
 		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no"/>
 		<title></title>
 		<style type="text/css">
-			/*.middle{
-				background: url(bgimg/start.jpg) no-repeat;
-				background-size: 850px 500px;
-				width: 850px;
-				height: 500px;
-			}
-			.guan{
-				display: inline-block;
-				width: 100px;
-				height: 30px;
-				border: solid 1px black;
-				background-color: white;
-				border-radius: 10px;
-				text-align: center;
-				line-height: 30px;
-				font-size: 18px;
-				margin-left: 10px;
-				margin-top: 10px;
-			}
-			.go{
-				display: inline-block;
-				width: 124px;
-				height: 30px;
-				border: solid 1px black;
-				background-color: white;
-				border-radius: 10px;
-				text-align: center;
-				line-height: 30px;
-				font-size: 18px;
-				margin-left: 10px;
-				margin-top: 40px;
-			}
-			.stop{
-				display: inline-block;
-				width: 124px;
-				height: 30px;
-				border: solid 1px black;
-				background-color: white;
-				border-radius: 10px;
-				text-align: center;
-				line-height: 30px;
-				font-size: 18px;
-				margin-left: 700px;
-				margin-top: 335px;
-			}
-			.bgimg img{
-				margin-left: 20px;
-				opacity: 0.5;
-				cursor: pointer;
-			}
-			.bgimg .img1{
-				opacity: 1;
-			}
-			#game_diff{
-				width: 850px;
-				height: 350px;
-				background: url(static/img/start2.jpg);
-				background-size: 850px 500px;
-				padding-top: 150px;
-				position: absolute;
-				left: 26px;
-				top: 118px;
-				display: none;
-			}
-			#game_diff ul{
-				margin-left: 350px;
-			}
-			#game_diff li{
-				list-style: none;
-				width: 80px;
-				height: 30px;
-				text-align: center;
-				line-height: 30px;
-				background-color: yellow;
-				opacity: 0.7;
-				margin-top: 10px;
-				cursor: pointer;
-				border-radius: 5px;
-			}
-			#game_diff li:hover{
-				opacity: 1;
-			}
-			#article{
-				display: none;
-			}*/
+			
 			* {
 				padding: 0;
 				margin: 0 auto;
@@ -127,6 +44,10 @@
 				.stop {
 					width: 100%;
 				}
+				.cz{
+					width: 100%;
+				}
+				
 			}
 			
 			.middle {
@@ -163,7 +84,7 @@
 				line-height: 30px;
 				font-size: 18px;
 				margin-left: 10px;
-				margin-top: 40px;
+				margin-top: 30px;
 				cursor: pointer;
 			}
 			/*音乐暂停*/
@@ -181,6 +102,20 @@
 				float: right;
 				
 			}
+			.money{
+				display: inline-block;
+				width: 100px;
+				height: 30px;
+				border: solid 1px black;
+				background-color: white;
+				border-radius: 10px;
+				text-align: center;
+				line-height: 30px;
+				font-size: 18px;
+				margin-left: 10px;
+				margin-top: 40px;
+				cursor: pointer;
+			}
 			/*logo*/
 			
 			.bgimg img {
@@ -188,6 +123,10 @@
 				cursor: pointer;
 				opacity: 0.5;
 			}
+			.bgimg .img1{
+				opacity: 1;
+			}
+			
 			/*关卡背景*/
 			
 			#game_diff {
@@ -227,6 +166,41 @@
 			#article {
 				display: none;
 			}
+			.cz{
+				width: 536px;
+				height: 118px;
+				background-color: skyblue;
+				display: none;
+				position: absolute;
+				top: 254px;
+				left: 497px;
+				font-size: 18px;
+				border: 1px solid blue;
+				border-radius: 15px;
+				
+			}
+			.cz input{
+				margin-top: 30px;
+				text-align: center;
+				margin-left: 50px;
+			}
+			.btn{
+				margin-left: 390px;
+				margin-top: 25px;
+				width: 50px;
+				height: 30px;
+				font-size: 17px;
+				border-radius: 5px;
+			}
+			.btn1{
+			    margin-right: 23px;
+			    margin-top: 25px;
+			    width: 50px;
+			    height: 30px;
+			    font-size: 17px;
+			    border-radius: 5px;
+			    float: right;
+			}
 		</style>
 	</head>
 	<body>
@@ -241,6 +215,17 @@
 				<a class="guan">关卡选择</a><br />
 				<a class="go">PLAY GAME</a><br />
 				<a class="stop">音乐暂停</a>
+				<a class="money">充值中心</a>
+				<div class="cz">
+					<!--<form>-->
+						<input type="radio" name="yuan"/>&nbsp;10元
+						<input type="radio" name="yuan"/>&nbsp;20元
+						<input type="radio" name="yuan"/>&nbsp;30元
+						<input type="radio" name="yuan"/>&nbsp;40元<br />
+						<button class="btn" >购买</button>
+						<button class="btn1">取消</button>
+					<!--</form>-->
+				</div>
 				<audio src="bgimg/music.mp3" autoplay="autoplay" class="music"></audio>
 			</div>
 			<div id="game_diff">
@@ -258,10 +243,10 @@
 					<img src="bgimg/1.jpg" style="width: 80px; height: 80px;" />
 					<img src="bgimg/2.jpg" style="width: 80px; height: 80px;" />
 					<img src="bgimg/3.jpg" style="width: 80px; height: 80px;" />
-					<img src="bgimg/4.jpg" style="width: 80px; height: 80px;" />
+					<!--<img src="bgimg/4.jpg" style="width: 80px; height: 80px;" />
 					<img src="bgimg/5.jpg" style="width: 80px; height: 80px;" />
 					<img src="bgimg/6.jpg" style="width: 80px; height: 80px;" />
-					<img src="bgimg/7.jpg" style="width: 80px; height: 80px;" />
+					<img src="bgimg/7.jpg" style="width: 80px; height: 80px;" />-->
 			</div>
 		</div>
 	</body>
@@ -324,6 +309,24 @@
 					}
 				})
 				
+				var c = true;
+				$(".money").click(function(){
+					if(c){
+						$(".cz").css("display","block")
+						c=false;
+					}else{
+						$(".cz").css("display","none")
+						c=true;
+					}
+				});
+				
+				$(".btn1").click(function(){
+					$(".cz").css("display","none")
+				})
+				
+				$(".btn").click(function(){
+					$(".cz").css("display","none")
+				})
 			})
 	</script>
 </html>
