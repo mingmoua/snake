@@ -2,33 +2,40 @@
 <html>
 	<head>
 		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no"/>
 		<title>响应式贪吃蛇</title>
+		<style>
+			*{
+				margin: 0;
+				padding: 0;
+			}
+		</style>
 	</head>
 	
 	<body>
-		<h3 id="title">开始游戏</h3>
+		<!--<h3 id="title">开始游戏</h3>-->
 		<canvas id="gameview" width="500" height="500px"
 		
 	</body>
 	
-	<script src="js/jquery-3.2.1.js"></script>
+	<script src="js/jquery-3.1.1.min.js"></script>
+	<script src="js/Snake.js"></script>
 	<script type="text/javascript">
 		$(function(){
-			var ctx = $("#gameview")[0].getContext('2d');
-			
-			var bgImag = new Image();
-			bgImag.src = "img/background.png"
-			
-			var startImage = new Image();
-			startImage.src = "img/timg1.jpg"
-			startImage.onload = function(){
-				ctx.drawImage(startImage,0,0,500,500)
-			
-			}
-			$("#gameview").click(function(){
-				ctx.drawImage(bgImag,0,0,500,500)
-			})
-			
+
+			var snakegame = new Snake();
+				//带初始化界面
+//				startImg.onload = function(){
+//					snakegame.init();
+//				}
+//				
+//				$("#gameview").click(function(){
+//					snakegame.paint();
+//				});
+				//直接进入游戏界面
+				bgImg.onload = function(){
+					snakegame.start();
+				}
 		})
 	</script>
 </html>

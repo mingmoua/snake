@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			.container {
+				width: 20rem;
+				height: 20rem;
+				border: 2px solid red;
+				box-shadow: 3px 3px 3px #888888;
+				position: relative;
+			}
+			
+			.toy {
+				width: 5rem;
+				height: 5rem;
+				background: greenyellow;
+				margin: 1rem;
+				position: absolute;
+			}
+		</style>
+		<script src="js/jquery-3.1.1.min.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			$(function() {
+				var fontSize;
+				function fn() {
+					fontSize = Math.floor(window.innerWidth / 40);
+					$("html").css("font-size", fontSize);
+				}
+				fn();
+				$(window).resize(function() {
+					fn();
+				});
+
+				function touchHandler(ev) {
+					var touchEvent = ev || window.ev;
+					ev.preventDefault(); //此语句阻止了浏览器默认事件处理机制，并取消了事件冒泡
+					//					console.dir(touchEvent);
+					switch(touchEvent.type) {
+						case "touchstart":
+							var left = touchEvent.changedTouches[0].pageX - (fontSize*2.5);
+							var top = touchEvent.changedTouches[0].pageY - (fontSize*2.5);
+							$(".toy").css({
+								"background": "blue",
+								"box-shadow": "5px 5px 5px #888888",
+								"top": top,
+								"left": left
+							});
+							break;
+						case "touchmove":
+							var left = touchEvent.changedTouches[0].pageX - (fontSize*2.5);
+							var top = touchEvent.changedTouches[0].pageY - (fontSize*2.5);
+							$(".toy").css({
+								"background": "red",
+								"box-shadow": "5px 5px 5px #333",
+								"top": top,
+								"left": left
+							});
+							break;
+						case "touchend":
+							$(".toy").css({
+								"background": "greenyellow",
+								"box-shadow": ""
+							});
+							break;
+					}
+
+				}
+				var container = document.querySelector(".container");
+				container.addEventListener("touchstart", touchHandler, false);
+				container.addEventListener("touchend", touchHandler, false);
+				container.addEventListener("touchmove", touchHandler, false);
+
+			});
+		</script>
+	</head>
+
+	<body>
+		<div class="container">
+			<div class="toy">
+
+			</div>
+		</div>
+	</body>
+
+</html>

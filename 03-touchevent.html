@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title></title>
+		<style type="text/css">
+			.container {
+				width: 20rem;
+				height: 20rem;
+				border: 2px solid red;
+			}
+			.toy {
+				width: 5rem;
+				height:5rem;
+				background: greenyellow;
+				margin: 1rem;
+			}
+		</style>
+		<script src="static/js/jquery-3.1.1.min.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			$(function(){
+				function fn(){
+					var fontSize = Math.floor(window.innerWidth/40);
+					$("html").css("font-size",fontSize);
+				}
+				fn();
+				$(window).resize(function(){
+					fn();
+				});
+				
+				function touchHandler(ev){
+					var touchEvent = ev||window.event;
+					ev.preventDefault();//此语句阻止了浏览器默认事件处理机制
+					console.dir(touchEvent);
+					switch(touchEvent.type){
+						case "touchstart":
+							$("ul").append($("<li>touchstart:("+touchEvent.changedTouches[0].clientX+","+touchEvent.changedTouches[0].clientY+")</li>"));
+						break;
+						case "touchmove":
+							$("ul").append($("<li>touchmove:("+touchEvent.changedTouches[0].clientX+","+touchEvent.changedTouches[0].clientY+")</li>"));
+						break;
+						case "touchend":
+							$("ul").append($("<li>touchend:("+touchEvent.changedTouches[0].clientX+","+touchEvent.changedTouches[0].clientY+")</li>"));
+						break;
+					}
+					
+				}
+				var container = document.querySelector(".container");
+				container.addEventListener("touchstart",touchHandler);
+				container.addEventListener("touchend",touchHandler);
+				container.addEventListener("touchmove",touchHandler);
+				
+			});
+		</script>
+	</head>
+	<body>
+		<ul id="msg"></ul>
+		<div class="container">
+			<div class="toy">
+				
+			</div>
+		</div>
+	</body>
+</html>
