@@ -127,6 +127,15 @@
 					$(".middle").hide();
 				})
 				
+				$(".go").click(function(){
+					speednum=500/($(this).index()+1);			
+					snakegame.start();
+					$("#game_diff").hide();
+					$("#article").css("display","block");
+					$(".bgimg").hide();
+					$(".middle").hide();
+				})
+				
 				$(".guan").click(function(){
 					$("#game_diff").css("display","block");
 				})

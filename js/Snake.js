@@ -16,7 +16,7 @@ bgImg.src = "img/background.png";
 //将欢迎界面的图片放在最后，表示加载成功后，其他图片已经加载完毕，无需再进行onload判断
 const startImg = new Image();
 startImg.src = "img/start.png";
-var speednum;
+var speednum = 500;//设置定时器的时间，调节速度
 //创建一个Snake类，定义其属性及方法
 function Snake() {
 	this.canvas = $("#gameview")[0]; //canvas画布对象
