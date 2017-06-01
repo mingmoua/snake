@@ -291,7 +291,7 @@
 				})
 				
 				$(".go").click(function(){
-					speednum=500/($(this).index()+1);			
+					speednum=500;			
 					snakegame.start();
 					$("#game_diff").hide();
 					$("#article").css("display","block");
@@ -309,7 +309,7 @@
 					$(".bgimg img").css("opacity",0.5);
 					$(this).css("border","solid 2px greenyellow");
 					$(this).css("opacity",1);
-					
+					bgImg.src=$(this).attr('src');
 				})
 				var a = true;
 				$(".stop").click(function(){
