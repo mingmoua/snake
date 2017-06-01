@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			.middle{
+				background: url(bgimg/start.jpg) no-repeat;
+				background-size: 850px 500px;
+				width: 850px;
+				height: 500px;
+			}
+			.guan{
+				display: inline-block;
+				width: 100px;
+				height: 30px;
+				border: solid 1px black;
+				background-color: white;
+				border-radius: 10px;
+				text-align: center;
+				line-height: 30px;
+				font-size: 18px;
+				margin-left: 10px;
+				margin-top: 10px;
+			}
+			.go{
+				display: inline-block;
+				width: 124px;
+				height: 30px;
+				border: solid 1px black;
+				background-color: white;
+				border-radius: 10px;
+				text-align: center;
+				line-height: 30px;
+				font-size: 18px;
+				margin-left: 10px;
+				margin-top: 40px;
+			}
+			.bgimg img{
+				margin-left: 20px;
+				opacity: 0.5;
+				cursor: pointer;
+			}
+			.bgimg .img1{
+				opacity: 1;
+			}
+			#game_diff{
+				width: 850px;
+				height: 350px;
+				background: url(static/img/start2.jpg);
+				background-size: 850px 500px;
+				padding-top: 150px;
+				position: absolute;
+				left: 26px;
+				top: 118px;
+				display: none;
+			}
+			#game_diff ul{
+				margin-left: 350px;
+			}
+			#game_diff li{
+				list-style: none;
+				width: 80px;
+				height: 30px;
+				text-align: center;
+				line-height: 30px;
+				background-color: yellow;
+				opacity: 0.7;
+				margin-top: 10px;
+				cursor: pointer;
+				border-radius: 5px;
+			}
+			#game_diff li:hover{
+				opacity: 1;
+			}
+			#article{
+				display: none;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="all">
+			<div class="head">
+				<img src="bgimg/logo-1.png" />
+			</div>
+			<article id="article">
+				<canvas id="gameview" width="500" height="500"></canvas>
+			</article>
+			<div class="middle">
+				<a class="guan">关卡选择</a><br />
+				<a class="go">PLAY GAME</a>
+			</div>
+			<div id="game_diff">
+				<ul>
+					<li>第一关</li>
+					<li>第二关</li>
+					<li>第三关</li>
+					<li>第四关</li>
+					<li>第五关</li>
+				</ul>
+			</div>
+			<div class="bgimg">
+					<p>皮肤切换</p>
+					<img src="bgimg/0.png" style="width: 80px; height: 80px;" class="img1"/>
+					<img src="bgimg/1.jpg" style="width: 80px; height: 80px;" />
+					<img src="bgimg/2.jpg" style="width: 80px; height: 80px;" />
+					<img src="bgimg/3.jpg" style="width: 80px; height: 80px;" />
+					<img src="bgimg/4.jpg" style="width: 80px; height: 80px;" />
+					<img src="bgimg/5.jpg" style="width: 80px; height: 80px;" />
+					<img src="bgimg/6.jpg" style="width: 80px; height: 80px;" />
+					<img src="bgimg/7.jpg" style="width: 80px; height: 80px;" />
+			</div>
+		</div>
+	</body>
+	<script src="js/jquery-3.1.1.min.js"></script>
+	<script src="js/Snake.js"></script>
+	<script type="text/javascript">
+									
+			$(function(){
+				var snakegame=new Snake();											
+				$("li").click(function(){			
+					speednum=500/($(this).index()+1);			
+					snakegame.start();
+					$("#game_diff").hide();
+					$("#article").css("display","block");
+					$(".bgimg").hide();
+					$(".middle").hide();
+				})
+				
+				$(".guan").click(function(){
+					$("#game_diff").css("display","block");
+				})
+				
+				$(".img1").css("border","solid 2px greenyellow");
+				$(".bgimg img").click(function(){
+					$(".bgimg img").css("border","");
+					$(".bgimg img").css("opacity",0.5);
+					$(this).css("border","solid 2px greenyellow");
+					$(this).css("opacity",1);
+					
+				})
+			})
+	</script>
+</html>

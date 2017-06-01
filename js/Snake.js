@@ -16,6 +16,7 @@ bgImg.src = "img/background.png";
 //将欢迎界面的图片放在最后，表示加载成功后，其他图片已经加载完毕，无需再进行onload判断
 const startImg = new Image();
 startImg.src = "img/start.png";
+var speednum;
 //创建一个Snake类，定义其属性及方法
 function Snake() {
 	this.canvas = $("#gameview")[0]; //canvas画布对象
@@ -70,7 +71,7 @@ function Snake() {
 	this.paint = function() {
 		//2.1 画出背景
 		this.ctx.drawImage(bgImg, 0, 0, this.width, this.height);
-		//2.2 画蛇
+		//2.2 画出蛇
 		this.drawSnake();
 		//2.3 随机画出食物
 		this.drawFood();
@@ -126,7 +127,7 @@ function Snake() {
 			this.drawFood(); //如果重复，则重绘
 		} else {
 			this.foodList.push({
-				x: foodX,
+				x: foodX,//食物的x
 				y: foodY,
 				img: foodImg
 			}); //新生成一个食物
@@ -140,34 +141,69 @@ function Snake() {
 	 * 3.1 判断设备如果是pc,响应
 	 * 
 	 * */
-	this.keyHandler = function(event){//键盘事件处理器
+	this.keyHandler = function() { //键盘事件处理器
 		//事件处理是异步的，所以，无法传递this对象
 		var _this = this;
-		document.onkeydown = function(ev){
-			var ev = ev||window.event;
-//			console.log(ev.key+":"+ev.keyCode);
-//			console.log(_this.snakeBodyList);
-			switch(ev.keyCode){
-				case 37://向左
-					_this.snakeBodyList[0].img = westImg;
-					_this.snakeBodyList[0].direct = 'west';
-				break;
-				case 38://向上
-					_this.snakeBodyList[0].img = northImg;
-					_this.snakeBodyList[0].direct = 'north';
-				break;
-				case 39://向右
-					_this.snakeBodyList[0].img = eastImg;
-					_this.snakeBodyList[0].direct = 'east';
-				break;
-				case 40://向下
-					_this.snakeBodyList[0].img = southImg;
-					_this.snakeBodyList[0].direct = 'south';
-				break;
+		//判定方向键是否可用
+		var westFlag = false;
+		var northFlag = true;
+		var eastFlag = false;
+		var southFlag = true;
+		document.onkeydown = function() {
+
+			var ev = ev || window.event;
+			switch (ev.keyCode) {
+				case 37: //向左
+					if (westFlag == true) {
+						_this.snakeBodyList[0].img = westImg;
+						_this.snakeBodyList[0].direct = "west";
+						westFlag = false;
+						eastFlag = false;
+						northFlag = true;
+						southFlag = true;
+					}
+
+					break;
+
+				case 38: //向上
+					if (northFlag == true) {
+
+						_this.snakeBodyList[0].img = northImg;
+						_this.snakeBodyList[0].direct = "north";
+						northFlag = false;
+						southFlag = false;
+						westFlag = true;
+						eastFlag = true;
+					}
+					break;
+
+				case 39: //向右
+					if (eastFlag == true) {
+						_this.snakeBodyList[0].img = eastImg;
+						_this.snakeBodyList[0].direct = "east";
+						westFlag = false;
+						eastFlag = false;
+						northFlag = true;
+						southFlag = true;
+					}
+
+					break;
+
+				case 40: //向下
+					if (southFlag == true) {
+
+						_this.snakeBodyList[0].img = southImg;
+						_this.snakeBodyList[0].direct = "south";
+						northFlag = false;
+						southFlag = false;
+						westFlag = true;
+						eastFlag = true;
+					}
+					break;
 			}
 		}
-		
 	}
+
 	this.touchHandler = function(){//触屏事件处理器
 		var _this = this;
 		document.addEventListener("touchstart",function(ev){
@@ -180,7 +216,7 @@ function Snake() {
 			var headX = head.x*_this.step;
 			var headY = head.y*_this.step;
 			if(head.direct == "north" || head.direct == "south"){
-				if(touchX<headX){
+				if(touchX<headX){//触碰的坐标x小于蛇头的坐标x
 					head.direct = "west";
 					head.img = westImg;
 				}else{
@@ -265,7 +301,7 @@ function Snake() {
 			}
 			
 		_this.paint();//重绘游戏画面
-		},200);
+		},speednum);
 	}
 	/*
 	 * 4-蛇死（碰到边界或碰到自身--dead 弹出得分界面）
