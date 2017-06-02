@@ -278,37 +278,27 @@ function Snake() {
 				//alert你的最终分数
 //				alert("your score is : "+ _this.score)
 				$quan = $("<div></div>");
-				$quan.css({"border-radius":"25px",
-						   "width":"900px",
-						   "height":"500px",
-						   "background-color":"gray",
-						   "margin-left":"10px",
-						   "margin-top":"90px",
-						   "border":"solid 5px greenyellow",
-						   "box-shadow":"5px 5px 5px gray"})
+				$quan.addClass("dead");
 				$quan.appendTo($(".all"));
 				$("#article").hide();
 				$(".head").hide();
 				$img = $("<img />");
 				$img.attr("src","bgimg/ku.png");
-				$img.css("text-align","center")
+				$img.addClass("oimg");
 				$img.appendTo($quan);
 				$h = $("<h1></h1>");
 				$h.html("hahaha~不小心死了~hahaha").css("color","red");
-				$h.css({"padding":"70px","display":"inline-block"})
+				$h.addClass("h");
 				$h.appendTo($quan);
 				$h.css("text-align","center")
 				$hh = $("<h3></h3>");
 				$hh.html("your score is :"+_this.score);
 				$hh.appendTo($quan);
-				$hh.css({"text-align":"center","margin-top":"5px","margin-left":"100px"});
+				$hh.css("text-align","center")
+				$hh.addClass("hh");
 				$aa = $("<a></a>");
-				$aa.html("返回游戏首页")
-				$aa.css({"font-size":"18px",
-						 "margin-left":"450px",
-						 "margin-top":"100px",
-						 "display":"inline-block",
-						 "cursor": "pointer"})
+				$aa.html("返回游戏首页");
+				$aa.addClass("aa");
 				$aa.click(function(){
 					$quan.hide();
 					$(".head").show();
@@ -399,13 +389,13 @@ function Snake() {
 	var _this = this;
 	
 	//在游戏中点击画布可以进行暂停
-	var d = true;
-	$("#article").click(function(){
-		if(d){
-			clearInterval(_this.timer);
-			d = false;
-		}else{
-			
-		}
-	})
+//	var d = true;
+//	$("#article").click(function(){
+//		if(d){
+//			clearInterval(_this.timer);
+//			d = false;
+//		}else{
+//			
+//		}
+//	})
 }
