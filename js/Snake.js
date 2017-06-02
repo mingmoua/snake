@@ -273,12 +273,32 @@ function Snake() {
 				//alert你的最终分数
 //				alert("your score is : "+ _this.score)
 				$quan = $("<div></div>");
-				$quan.css({"width":"1000px","height":"1000px","background-color":"red","margin-left":"10px"})
-				$quan.appendTo($("body"))
+				$quan.css({"width":"1000px","height":"500px","background-color":"gray","margin-left":"10px","padding-top":"90px"})
+				$quan.appendTo($(".all"));
+				$("#article").hide();
+				$(".head").hide();
+				$h = $("<h1></h1>");
+				$h.html("hahaha~你死了~hahaha");
+				$h.appendTo($quan);
+				$h.css("text-align","center")
+				$hh = $("<h3></h3>");
+				$hh.html("your score is :"+_this.score);
+				$hh.appendTo($quan);
+				$hh.css({"text-align":"center","margin-top":"30px"});
+				$aa = $("<a></a>");
+				$aa.html("返回游戏首页")
+				$aa.css({"font-size":"18px","margin-left":"450px","margin-top":"100px","display":"inline-block"})
+				$aa.click(function(){
+					$quan.hide();
+					$(".head").show();
+					$(".middle").show();
+					$(".bgimg").show();
+				})
+				$aa.appendTo($quan);
 				clearInterval(_this.timer);//如果不清除定时器，速度会越来越快
 				_this.isDead = false;//改变isDead状态，否则每次直接死掉
 				_this.snakeBodyList = [];
-				_this.start();
+//				_this.start();
 				
 			}else{
 				//3.1.2 false 蛇活着，判断蛇头是否与食物的坐标一直，如果一致，清空食物数组
