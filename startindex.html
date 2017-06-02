@@ -14,7 +14,7 @@
 			}
 			
 			.all {
-				width: 900px;
+				width: 850px;
 				height: 700px;
 				
 			}
@@ -233,17 +233,31 @@
 			.img8{
 				display: none;
 			}
+			.head{
+				text-align: center;
+			}
+			.fenshu{
+    			margin-top: 50px;
+    			float: right;
+    			display: none;
+    			
+			}
 		</style>
 	</head>
 	<body>
 		<div class="all">
 			<div class="head">
 				<img src="bgimg/logo-1.png" />
+				<div class="fenshu">
+					<img src="bgimg/food1.png" style="width: 40px;"/><span>10分</span>
+					<img src="bgimg/food2.png" style="width: 40px;"/><span>20分</span>
+					<img src="bgimg/food3.png" style="width: 40px;"/><span>30分</span>
+				</div>
 			</div>
 			<article id="article">
 				<canvas id="gameview" width="850" height="500"></canvas>
 			</article>
-			<div class="middle">
+			<div class="middle" >
 				<a class="guan">关卡选择</a><br />
 				<a class="go">PLAY GAME</a><br />
 				<a class="money">充值中心</a>
@@ -270,6 +284,7 @@
 					<li>第五关</li>
 				</ul>
 			</div>
+			
 			<div class="bgimg">
 					<p>皮肤切换</p>
 					<img src="bgimg/0.png" style="width: 80px; height: 80px;" class="img1"/>
@@ -306,6 +321,7 @@
 					$("#article").css("display","block");
 					$(".bgimg").hide();
 					$(".middle").hide();
+					$(".fenshu").css("display","inline-block");
 				})
 				
 				$(".go").click(function(){
@@ -315,6 +331,7 @@
 					$("#article").css("display","block");
 					$(".bgimg").hide();
 					$(".middle").hide();
+					$(".fenshu").css("display","inline-block");
 				})
 //				
 //				$(".guan").click(function(){

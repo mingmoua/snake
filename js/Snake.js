@@ -133,7 +133,7 @@ function Snake() {
 			}); //新生成一个食物
 			//随机换成不同的食物图片
 			var foodNum=parseInt(Math.random()*3+1);
-			foodImg.src="img/food"+foodNum+".png";
+			foodImg.src="bgimg/food"+foodNum+".png";
 			foodImg.data = foodNum;
 			
 			var fnode = this.foodList[0];
@@ -278,7 +278,14 @@ function Snake() {
 				//alert你的最终分数
 //				alert("your score is : "+ _this.score)
 				$quan = $("<div></div>");
-				$quan.css({"border-radius":"25px","width":"1000px","height":"500px","background-color":"gray","margin-left":"10px","margin-top":"90px"})
+				$quan.css({"border-radius":"25px",
+						   "width":"900px",
+						   "height":"500px",
+						   "background-color":"gray",
+						   "margin-left":"10px",
+						   "margin-top":"90px",
+						   "border":"solid 5px greenyellow",
+						   "box-shadow":"5px 5px 5px gray"})
 				$quan.appendTo($(".all"));
 				$("#article").hide();
 				$(".head").hide();
@@ -287,17 +294,21 @@ function Snake() {
 				$img.css("text-align","center")
 				$img.appendTo($quan);
 				$h = $("<h1></h1>");
-				$h.html("hahaha~你死了~hahaha");
+				$h.html("hahaha~不小心死了~hahaha").css("color","red");
 				$h.css({"padding":"70px","display":"inline-block"})
 				$h.appendTo($quan);
 				$h.css("text-align","center")
 				$hh = $("<h3></h3>");
 				$hh.html("your score is :"+_this.score);
 				$hh.appendTo($quan);
-				$hh.css({"text-align":"center","margin-top":"5px"});
+				$hh.css({"text-align":"center","margin-top":"5px","margin-left":"100px"});
 				$aa = $("<a></a>");
 				$aa.html("返回游戏首页")
-				$aa.css({"font-size":"18px","margin-left":"450px","margin-top":"100px","display":"inline-block"})
+				$aa.css({"font-size":"18px",
+						 "margin-left":"450px",
+						 "margin-top":"100px",
+						 "display":"inline-block",
+						 "cursor": "pointer"})
 				$aa.click(function(){
 					$quan.hide();
 					$(".head").show();
@@ -385,4 +396,16 @@ function Snake() {
 			this.isEaten = true;
 		}
 	}
+	var _this = this;
+	
+	//在游戏中点击画布可以进行暂停
+	var d = true;
+	$("#article").click(function(){
+		if(d){
+			clearInterval(_this.timer);
+			d = false;
+		}else{
+			
+		}
+	})
 }
