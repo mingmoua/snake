@@ -282,9 +282,13 @@ function Snake() {
 				$quan.appendTo($(".all"));
 				$("#article").hide();
 				$(".head").hide();
+				$img = $("<img />");
+				$img.attr("src","bgimg/ku.png");
+				$img.css("text-align","center")
+				$img.appendTo($quan);
 				$h = $("<h1></h1>");
 				$h.html("hahaha~你死了~hahaha");
-				$h.css("padding","70px")
+				$h.css({"padding":"70px","display":"inline-block"})
 				$h.appendTo($quan);
 				$h.css("text-align","center")
 				$hh = $("<h3></h3>");
