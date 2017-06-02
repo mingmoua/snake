@@ -131,6 +131,11 @@ function Snake() {
 				y: foodY,
 				img: foodImg
 			}); //新生成一个食物
+			//随机换成不同的食物图片
+			var foodNum=parseInt(Math.random()*3+1);
+			foodImg.src="img/food"+foodNum+".png";
+			foodImg.data = foodNum;
+			
 			var fnode = this.foodList[0];
 			this.ctx.drawImage(fnode.img, fnode.x * this.step, fnode.y * this.step, this.step, this.step);
 		}
@@ -273,18 +278,19 @@ function Snake() {
 				//alert你的最终分数
 //				alert("your score is : "+ _this.score)
 				$quan = $("<div></div>");
-				$quan.css({"width":"1000px","height":"500px","background-color":"gray","margin-left":"10px","padding-top":"90px"})
+				$quan.css({"border-radius":"25px","width":"1000px","height":"500px","background-color":"gray","margin-left":"10px","margin-top":"90px"})
 				$quan.appendTo($(".all"));
 				$("#article").hide();
 				$(".head").hide();
 				$h = $("<h1></h1>");
 				$h.html("hahaha~你死了~hahaha");
+				$h.css("padding","70px")
 				$h.appendTo($quan);
 				$h.css("text-align","center")
 				$hh = $("<h3></h3>");
 				$hh.html("your score is :"+_this.score);
 				$hh.appendTo($quan);
-				$hh.css({"text-align":"center","margin-top":"30px"});
+				$hh.css({"text-align":"center","margin-top":"5px"});
 				$aa = $("<a></a>");
 				$aa.html("返回游戏首页")
 				$aa.css({"font-size":"18px","margin-left":"450px","margin-top":"100px","display":"inline-block"})
@@ -309,7 +315,19 @@ function Snake() {
 					//清空食物数组
 					_this.foodList = [];
 					//加分
-					_this.score += 10;
+					
+					switch(foodImg.data){
+						case 1:
+						_this.score += 10;
+						break;
+						case 2:
+						_this.score += 20;
+						break;
+						case 3:
+						_this.score += 30;
+						break;
+					}
+					
 					//蛇身长一节
 					var lastNodeIndex = _this.snakeBodyList.length;
 					_this.snakeBodyList[lastNodeIndex] = {
